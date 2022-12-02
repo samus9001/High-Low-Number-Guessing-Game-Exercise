@@ -13,9 +13,9 @@ namespace HighLowNumberGuessing
             int Guess = 0;
             int highGuess = rndValue + 5;
             int lowGuess = rndValue - 5;
+            int guessCounter = 0;
 
-            Console.WriteLine("I'm thinking of a random number between 0 and 100, can you guess it?");
-            Console.WriteLine(rndValue);
+            Console.WriteLine("I'm thinking of a number between 0 and 100. You have 3 chances to guess it\n");
 
             while (Guess != rndValue)
             {
@@ -23,31 +23,39 @@ namespace HighLowNumberGuessing
 
                 if (Guess == rndValue)
                 {
-                    Console.WriteLine("You guessed the correct number!");
-                }
-
-                if (Guess == highGuess)
-                {
-                    Console.WriteLine("You're close!");
-                }
-
-                if (Guess == lowGuess)
-                {
-                    Console.WriteLine("You're close!");
                 }
 
                 if (Guess > rndValue)
                 {
-                    Console.WriteLine("That number is too high, try again");
+                    Console.WriteLine("That number is too high\n");
+                }
 
+                if (Guess == highGuess)
+                {
+                    Console.WriteLine("You're close!\n");
                 }
 
                 if (Guess < rndValue)
                 {
-                    Console.WriteLine("That number is too low, try again");
+                    Console.WriteLine("That number is too low\n");
+                }
+
+                if (Guess == lowGuess)
+                {
+                    Console.WriteLine("You're close!\n");
+                }
+
+                if (Guess > 0)
+                {
+                    guessCounter++;
+                }
+
+                if (guessCounter == 3)
+                {
+                    Console.WriteLine("\nYou guessed incorrectly too many times. You lose!");
+                    break;
                 }
             }
         }
-
     }
 }
