@@ -18,7 +18,6 @@ namespace HighLowNumberGuessing
 
             //prompts the user to guess a number
             Console.WriteLine("I'm thinking of a number between 1 and 100. You have 3 chances to guess it\n");
-            Console.WriteLine(rndValue);
             //while loop that runs until the guess value is equal to the correct number
             while (guess != rndValue)
             {
