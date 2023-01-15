@@ -4,13 +4,16 @@ namespace HighLowNumberGuessing
 
 {
     internal class Program
+
     {
+        const int GUESSES = 5;
+
         static void Main(string[] args)
         {
             Random rnd = new Random();
 
             //create a random value between 0 and 100
-            int rndValue = rnd.Next(0, 101);
+            int rndValue = rnd.Next(-1, 101);
 
             //variables that track the game state
             int guess = -1;
@@ -19,7 +22,7 @@ namespace HighLowNumberGuessing
             char endGame;
 
             //prompts the user to guess a number
-            Console.WriteLine("I'm thinking of a number between 0 and 100. You have 5 chances to guess the number!\n");
+            Console.WriteLine($"I'm thinking of a number between 0 and 100. You have {GUESSES} chances to guess the number!\n");
 
             //while loop that runs until the guess value is equal to the correct number
             while (guess != rndValue)
@@ -29,23 +32,6 @@ namespace HighLowNumberGuessing
 
                 //decrease value of guessCounter by one
                 guessCounter--;
-
-                if (guess == rndValue)
-                {
-                    Console.WriteLine("You guessed the correct number. Congratulations you win!\n\nIf you would like to play again press Y or press N to exit");
-                    endGame = Console.ReadKey().KeyChar;
-
-                    if (endGame == 'Y')
-                    {
-                        Console.Clear();
-                        Main(args);
-                    }
-
-                    else if (endGame == 'N')
-                    {
-                        Environment.Exit(0);
-                    }
-                }
 
                 if (guess > rndValue)
                 {
@@ -63,23 +49,34 @@ namespace HighLowNumberGuessing
                     Console.WriteLine($"Your guess is within 5 of the value. Keep going!\n");
                 }
 
+                //game over condition check
                 if (guessCounter <= 0)
                 {
-                    Console.WriteLine($"\nYou guessed incorrectly too many times. You lose!\nThe number was {rndValue}\n\nIf you would like to play again press Y or press N to exit");
-                    //prompts user to restart or exit game
-                    endGame = Console.ReadKey().KeyChar;
-
-                    if (endGame == 'Y')
-                    {
-                        Console.Clear();
-                        Main(args);
-                    }
-
-                    else if (endGame == 'N')
-                    {
-                        Environment.Exit(0);
-                    }
+                    Console.Clear();
+                    Console.WriteLine($"\nYou ran out of guesses. You lose!\nThe number was {rndValue}\n\nIf you would like to play again press Y or press N to exit");
+                    break;
                 }
+            }
+
+            //game won
+            if (guess == rndValue)
+            {
+                Console.Clear();
+                Console.WriteLine("You guessed the correct number. Congratulations you win!\n\nIf you would like to play again press Y or press N to exit");
+            }
+
+            //prompts user to restart or exit game
+            endGame = Console.ReadKey().KeyChar;
+
+            if (endGame == 'Y')
+            {
+                Console.Clear();
+                Main(args);
+            }
+
+            else if (endGame == 'N')
+            {
+                return;
             }
         }
     }
