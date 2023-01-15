@@ -17,4 +17,4 @@ This is a simple program that was made as an exercise to learn how integers, if 
 
 ### Getting Started
 
-To use the program run the HighLowNumberGuessing.exe file then input any number into the console window and follow the prompts.
+To use the program download the bin.zip file from the Releases page, then run the HighLowNumberGuessing.exe file then input any number into the console window and follow the prompts.
