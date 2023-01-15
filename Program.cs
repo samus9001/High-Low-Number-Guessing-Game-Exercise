@@ -49,7 +49,7 @@ namespace HighLowNumberGuessing
                     Console.WriteLine($"Your guess is within 5 of the value. Keep going!\n");
                 }
 
-                //game over condition check
+                //game over check
                 if (guessCounter <= 0)
                 {
                     Console.Clear();
@@ -58,7 +58,7 @@ namespace HighLowNumberGuessing
                 }
             }
 
-            //game won
+            //game won check
             if (guess == rndValue)
             {
                 Console.Clear();
